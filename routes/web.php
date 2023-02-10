@@ -15,12 +15,33 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\MainController;
 
-//INDEX
-Route::get('/', [MainController :: class, 'home']);
+//HOME
+Route::get('/', [MainController :: class, 'home'])
+    -> name('home');
 
 //ADMIN
 Route::get('/admin', [MainController :: class, 'admin'])
-        -> name('admin');
+    -> name('admin');
+
+//SHOW
+Route :: get('/project/show/{project}', [MainController :: class, 'projectShow'])
+    -> name('project.show');
+
+//DELETE
+Route :: get('/project/delete/{project}', [MainController :: class, 'projectDelete'])
+    -> name('project.delete');
+
+//CREATE
+Route :: post('/project/store', [MainController :: class, 'projectStore'])
+    -> name('project.store');
+
+//EDIT
+Route :: get('/project/edit/{project}', [MainController :: class, 'projectEdit'])
+    -> name('project.edit');
+
+// Route :: post('/project/update/{project}', [MainController :: class, 'projectUpdate'])
+//     -> name('project.update');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
