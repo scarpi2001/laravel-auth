@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\MainController;
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+//INDEX
+Route::get('/', [MainController :: class, 'home']);
+
+//ADMIN
+Route::get('/admin', [MainController :: class, 'admin'])
+        -> name('admin');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
