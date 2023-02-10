@@ -39,8 +39,8 @@ Route :: post('/project/store', [MainController :: class, 'projectStore'])
 Route :: get('/project/edit/{project}', [MainController :: class, 'projectEdit'])
     -> name('project.edit');
 
-// Route :: post('/project/update/{project}', [MainController :: class, 'projectUpdate'])
-//     -> name('project.update');
+Route :: post('/project/update/{project}', [MainController :: class, 'projectUpdate'])
+    -> name('project.update');
 
 
 Route::get('/dashboard', function () {

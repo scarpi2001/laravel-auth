@@ -22,13 +22,14 @@
     <div id="app">
 
         @include('components.header')
-
+        
         <main>
+            @include('components.errors')
             @yield('content')
         </main>
 
         @include('components.footer')
         
     </div>
-</body>
+</body>                 
 </html>
