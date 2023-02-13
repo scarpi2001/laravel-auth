@@ -7,7 +7,12 @@
 <ul>
     @foreach ($projects as $project)
         <a href="{{ route('project.show', $project) }}">
-            <li>{{ $project -> name }}</li>
+            <li>
+                <h1>
+                    {{ $project -> name }}
+                </h1>
+                <img src="{{ asset('storage/' . $project -> main_image) }}" alt="{{ $project -> name }}">
+            </li>
         </a>
     @endforeach
 </ul>

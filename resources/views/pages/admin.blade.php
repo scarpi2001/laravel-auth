@@ -4,7 +4,7 @@
 
 {{-- form crea nuovo progetto --}}
 <h1>New Project</h1>
-    <form method="POST" action="{{ route('project.store') }}">
+    <form method="POST" action="{{ route('project.store') }}" enctype="multipart/form-data">
         @csrf
         <label for="name">Name</label>
         <input type="text" name="name">
@@ -13,7 +13,7 @@
         <input type="text" name="description">
         <br>
         <label for="main_image">image</label>
-        <input type="text" name="main_image">
+        <input type="file" name="main_image">
         <br>
         <label for="release_date">release date</label>
         <input type="date" name="release_date">

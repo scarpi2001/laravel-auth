@@ -21,7 +21,7 @@ class ProjectFactory extends Factory
             'description' => fake()->paragraph(),
             'repo_link' => fake()->url(),
             'release_date' => fake()->dateTime(),
-            'main_image' => fake()->imageUrl(640, 480, 'animals', true)
+            //'main_image' => fake()->imageUrl(640, 480, 'animals', true)
         ];
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     
     <h1>Edit Project</h1>
-    <form method="POST" action="{{ route('project.update', $project) }}">
+    <form method="POST" action="{{ route('project.update', $project) }}" enctype="multipart/form-data">
         @csrf
         <label for="name">Name</label>
         <input type="text" name="name" value="{{ $project -> name }}">
@@ -12,7 +12,7 @@
         <input type="text"  name="description" value="{{ $project -> description }}">
         <br>
         <label for="main_image">image</label>
-        <input type="text" name="main_image" value="{{ $project -> main_image }}">
+        <input type="file" name="main_image" value="{{ $project -> main_image }}">
         <br>
         <label for="release_date">release date</label>
         <input type="date" name="release_date" value="{{ $project -> release_date }}">

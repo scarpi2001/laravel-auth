@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Project;
 
@@ -33,13 +34,16 @@ class MainController extends Controller
         $data = $request -> validate([
             'name' => 'required|string|max:64|unique:projects,name',
             'description' => 'nullable|string',
-            'main_image' => 'required|url|unique:projects,main_image',
+            'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'release_date' => 'required|date|before:today',
             'repo_link' => 'required|url|unique:projects,repo_link',
         ]);
-    
+        
+        $img_path = Storage::put('uploads', $data['main_image']);
+        $data['main_image'] = $img_path;
+        
         $project = new Project();
-    
+            
         $project -> name = $data['name'];
         $project -> description = $data['description'];
         $project -> main_image = $data['main_image'];
@@ -47,6 +51,8 @@ class MainController extends Controller
         $project -> repo_link = $data['repo_link'];
     
         $project -> save();
+
+        // $project = Project::create($data);
     
         return redirect() -> route('admin');
     }
@@ -70,11 +76,14 @@ class MainController extends Controller
         $data = $request -> validate([
             'name' => 'required|string|max:64',
             'description' => 'nullable|string',
-            'main_image' => 'required|url',
+            'main_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'release_date' => 'required|date|before:today',
             'repo_link' => 'required|url|',
         ]);
-    
+        
+        $img_path = Storage::put('uploads', $data['main_image']);
+        $data['main_image'] = $img_path;
+
         $project -> name = $data['name'];
         $project -> description = $data['description'];
         $project -> main_image = $data['main_image'];
@@ -82,6 +91,9 @@ class MainController extends Controller
         $project -> repo_link = $data['repo_link'];
     
         $project -> save();
+
+        // $project -> update($data);
+        // $project -> save();
     
         return redirect() -> route('admin');
     }
