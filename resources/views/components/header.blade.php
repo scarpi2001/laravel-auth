@@ -21,12 +21,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
-                @if (Route::has('register'))
+                {{-- @if (Route::has('register'))
                 <!-- Register -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
-                @endif
+                @endif --}}
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -34,7 +34,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                        <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -46,10 +46,6 @@
                     </div>
                 </li>
                 @endguest
-                <!-- Admin -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin') }}">Admin</a>
-                </li>
             </ul>
         </div>
     </div>
