@@ -4,13 +4,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProjectController;
 
 //home
 Route::get('/', [MainController :: class, 'home'])
     -> name('home');
 
 //show
-Route :: get('/project/show/{project}', [MainController :: class, 'projectShow'])
+Route :: get('/project/show/{project}', [ProjectController :: class, 'projectShow'])
     -> name('project.show');
 
 
@@ -26,18 +27,18 @@ Route::middleware(['auth', 'verified'])
    ->prefix('project')
    ->group(function () {
          //delete
-        Route :: get('/delete/{project}', [MainController :: class, 'projectDelete'])
+        Route :: get('/delete/{project}', [ProjectController :: class, 'projectDelete'])
             -> name('delete');
 
         //create
-        Route :: post('/store', [MainController :: class, 'projectStore'])
+        Route :: post('/store', [ProjectController :: class, 'projectStore'])
             -> name('store');
 
         //edit
-        Route :: get('/edit/{project}', [MainController :: class, 'projectEdit'])
+        Route :: get('/edit/{project}', [ProjectController :: class, 'projectEdit'])
             -> name('edit');
 
-        Route :: post('/update/{project}', [MainController :: class, 'projectUpdate'])
+        Route :: post('/update/{project}', [ProjectController :: class, 'projectUpdate'])
             -> name('update');
    });
 
